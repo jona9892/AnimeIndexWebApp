@@ -1,0 +1,240 @@
+
+    #animeImage {
+        position: relative;
+        width: 220px;
+        height: 270px;
+        max-height: 100%;
+        max-width: 100%;
+        margin: 1%;
+        transition: 0.3s;
+        cursor: pointer;
+        cursor: hand;
+        -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    }
+
+      #animeImage:hover {
+            -ms-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+      }
+
+      #infoAnime{
+          position: relative;
+          width: 300px;
+          height: 400px;
+          max-height: 100%;
+          max-width: 100%;
+          display: block;
+
+      }
+
+      #divCell{
+          margin-bottom: 10px;
+      }
+
+      .h4 {
+          text-align: center;
+          background-color:#b3d9ff;
+      }
+
+      h3 {
+        text-align: center;
+        margin-top: -5px;
+          cursor: pointer;
+          cursor: hand;
+          color: #0066cc;
+      }
+
+      h3:hover{
+          color: #0000b3;
+      }
+
+      #the-sticky-div.sticky {
+          position: fixed;
+          top: 0;
+      }
+
+      #theDiscription {
+          overflow-y:auto;
+          width:245px;
+          height:275px;
+          display: block;
+      }
+
+      .search{
+          font-size: 24px;
+      }
+
+      table, th , td {
+          border: 1px solid #cccccc;
+          border-collapse: collapse;
+          padding: 5px;
+      }
+
+      table tr:nth-child(odd) {
+          background-color: #f1f1f1;
+      }
+
+      table tr:nth-child(even) {
+          background-color: #ffffff;
+      }
+
+      #tabelTitle{
+        font-size: 18px;
+        font-weight: bold;
+        color: #000099;
+        vertical-align: top;
+        cursor: pointer;
+        cursor: hand;
+      }
+
+      #tabelTitle:hover{
+          color: blue;
+      }
+      #tabelTitleSearch{
+
+        width: 1500px;
+        height: 110px;
+        overflow: hidden;
+        text-overflow: clip ellipsis;
+
+      }
+
+      #tableInfo{
+        font-size: 12px;
+      }
+
+      #imageDisplay{
+          position: relative;
+          width: 100px;
+          height: 100px;
+          max-height: 100%;
+          max-width: 100%;
+      }
+
+      #number{
+          font-size: 24px;
+          font-weight: bold;
+          text-align: center;
+          color: #666666;
+      }
+
+      #image {
+          position: relative;
+          width: 150px;
+          height: 150px;
+          max-height: 100%;
+          max-width: 100%;
+      }
+
+      #image2 {
+          width: 150px;
+          height: 150px;
+          max-height: 200%;
+          max-width: 100%;
+      }
+
+      #menubar{
+          background-color: #66b3ff;
+      }
+
+      #menuitem{
+          color: white;
+          font-size: 20px;
+      }
+
+      #menuitem2{
+        text-align: center;
+          color: white;
+          font-size: 14px;
+          background-color: #80bfff;
+
+      }
+
+
+      #banner{
+        background-color: #66b3ff;
+        text-align: center;
+
+      }
+      #bannerText{
+        font-size: 600%;
+        color: white;
+      }
+
+      hr {
+        margin-top: 0.1em;
+        margin-bottom: 0.1em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #animeindex{
+      color: #66b3ff;
+      font-size: 34px;
+      font-style: italic;
+    }
+
+    #searchbar {
+      text-align: center;
+    }
+
+    .search-form {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 40px;
+    border-radius: 40px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+  }
+
+  .search-input {
+  position: absolute;
+  top: 10px;
+  left: 38px;
+  font-size: 14px;
+  background: none;
+  color: #5a6674;
+  width: 195px;
+  height: 20px;
+  border: none;
+  appearance: none;
+  outline: none;
+}
+
+#selectSearchType{
+  margin-right: 10px;
+  text-align: center;
+}
+
+#selectOption:hover{
+  background-color: #d9d9d9;
+}
+
+#genreStyle{
+  background-color:#99ccff;
+  margin-top:-10px;
+  text-align:center;
+  height: 30px
+}
+
+#genreStyles{
+  width: 100px;
+  height: 40px;
+  border: 1px solid #99ccff;
+  border-radius: 25px;
+}
+
+#genreCell{
+  background-color: #ffffff;
+  width: 49%;
+  display: inline;
+  color:#b3b3b3;
+  font-size:10px;
+  border-radius: 25px;
+}

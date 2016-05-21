@@ -1,0 +1,67 @@
+
+<div class="container" ng-if="isAdmin()">
+  <div class="row" >
+    <div class="col-lg-12">
+      <h1 class="page-header">Animes:</h1>
+
+        <form name="addAnimeForm" class="form-horizontal">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Title</label>
+            <input ng-model="newAnime.title">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Type</label>
+            <input ng-model="newAnime.type">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Status</label>
+            <input ng-model="newAnime.status">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Description</label>
+            <input ng-model="newAnime.description">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Rating</label>
+            <input ng-model="newAnime.rating">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Air date</label>
+            <input ng-model="newAnime.airdate">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>End date</label>
+            <input ng-model="newAnime.enddate">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Episodes</label>
+            <input ng-model="newAnime.episodeCount" type="Number">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Image</label>
+            <input ng-model="newAnime.image">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Image</label>
+            <input ng-model="newAnime.trailer">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Genre</label>
+            <select ng-model="newAnime.genres" ng-options="genre.name for genre in genres">
+              {{genre.name}}
+            </select>
+          </md-input-container>
+
+            <button class="btn btn-success" ng-click="addAnime(addAnimeForm)">Add anime</button>
+        </form>
+          <md-button class="md-fab md-mini md-primary" aria-label="Go Back" ng-click="goBack()">
+            <i class="fa fa-arrow-left"></i>
+        </md-button>
+
+    </div>
+
+  </div>
+</div>
+<div ng-if="!isAdmin()">
+  <h3>You need to be logged in as an administrator!</h3>
+</div>

@@ -1,0 +1,75 @@
+<div ng-if="isAdmin()">
+  <md-content flex-offset="5" flex="90" ng-if="!updatingGenre">
+    <md-list flex>
+      <!--AddForm-->
+      <form name="newGenreForm">
+        <md-list-item style="margin-bottom:10px">
+          <md-input-container flex="15" class="md-block">
+            <label>Genre</label>
+            <input required ng-model="newGenre.name" name="nameOfGenre">
+          </md-input-container>
+          <md-button ng-click="addGenre(newGenreForm)">
+            <i class="fa fa-plus"> ADD</i>
+          </md-button>
+          <md-divider></md-divider>
+        </md-list-item>
+      </form>
+
+        <!--Index-->
+      <md-subheader class="md-no-sticky">Genres</md-subheader>
+      <!--uses the ng-reapeat as a for each loop, and gets all animes-->
+
+      <md-content class="md-padding">
+        <table style="width: 100%">
+          <tr>
+            <th id="menuitem2" ng-click="sort('name')">Genre <i class="fa" ng-show="propToSortOn=='name'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
+            <th id="menuitem2">Edit</th>
+            <th id="menuitem2">Delete</th>
+          </tr>
+          <tr ng-repeat="genre in genres | filter:searchText  | orderBy : propToSortOn:reverse ">
+            <td style="text-align: center">{{genre.name ? genre.name : 'Missing'}}</td>
+
+            <td  style="text-align: center">
+                <md-button ng-click="setUpdatingGenre(genre)" class="md-icon-button" aria-label="Open sample menu">
+                  <i class="fa fa-pencil"></i>
+                </md-button>
+            </td>
+            <td  style="text-align: center">
+              <md-button aria-label="Delete Genre" cclass="md-icon-button" ng-click="deleteGenre(genre)">
+                <div style="color:darkred">
+                  <i class="fa fa-trash"></i> 
+                </div>
+              </md-button>
+            </td>
+
+          </tr>
+        </table>
+      </md-content>
+    </md-list>
+  </md-content>
+
+  <!--EditForm if updatingAnime has an anime-->
+    <md-content layout-padding flex-offset="30" flex="40" ng-if="updatingGenre" class="animate-new-course">
+      <form name="updateGenreForm" style="margin-bottom:10px">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Name</label>
+          <input required ng-model="updatingGenre.name">
+          <div ng-messages="updateGenreForm.nameOfGenre.$error" role="alert">
+            <div ng-message="required">Please specify a genre</div>
+          </div>
+        </md-input-container>
+        <button class="btn btn-primary" ng-click="updateGenre(updateGenreForm)">Save changes</button>
+        <md-button aria-label="Delete Genre" class="md-raised md-danger" ng-click="deleteGenre(updatingGenre, $event)">
+          <div style="color:darkred">
+            <i class="fa fa-trash"></i> Delete
+          </div>
+        </md-button>
+      </form>
+      <md-button aria-label="undo changes" ng-click="undoGenreUpdate()" class="md-raised md-warning">
+        <i class="fa fa-undo"></i>Cancel
+      </md-button>
+    </md-content>
+  </div>
+  <div ng-if="!isAdmin()">
+    <h3>You need to be logged in as an administrator!</h3>
+  </div>

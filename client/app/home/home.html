@@ -1,0 +1,189 @@
+<div flex-offset="15" flex="70" >
+<!--The menu bar and banner animeindex-->
+<div>
+<header id="banner">
+  <div>
+    <h1 id="bannerText">AnimeIndex <img id="image" src="assets/images/naruto.png" alt="Animeasd"> </h1>
+  </div>
+</header>
+<hr flex-offset="15" flex="70">
+<md-toolbar class="md-menu-toolbar">
+   <div layout="row" id="menubar">
+     <div>
+       <md-menu-bar>
+         <md-menu>
+           <button ng-click="$mdOpenMenu()">
+             <div id="menuitem">Anime</div>
+           </button>
+           <md-menu-content>
+
+             <md-menu-item>
+               <md-button>
+                 <a href="/home">Animes</a>
+               </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+
+              <md-menu-item>
+               <md-button>
+                 <a href="/searchanime">Search animes</a>
+               </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+
+              <md-menu-item>
+               <md-button>
+                 <a href="/topanime">Best animes</a>
+               </md-button>
+             </md-menu-item>
+             <md-menu-divider></md-menu-divider>
+
+           </md-menu-content>
+         </md-menu>
+        <md-menu>
+          <button ng-click="$mdOpenMenu()">
+            <div  id="menuitem">Manga</div>
+          </button>
+
+          <md-menu-content>
+
+            <md-menu-item>
+              <md-button>
+                <a href="/home">Mangas</a>
+              </md-button>
+             </md-menu-item>
+             <md-menu-divider></md-menu-divider>
+
+             <md-menu-item>
+              <md-button>
+                <a href="/searchanime">Search mangas</a>
+              </md-button>
+             </md-menu-item>
+             <md-menu-divider></md-menu-divider>
+
+             <md-menu-item>
+              <md-button>
+                <a href="/topanime">Best mangas</a>
+              </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+          </md-menu-content>
+
+        </md-menu>
+        <div class="form-group" style="display:inline-block ">
+          <label ><i class="fa fa-globe"></i> User</label>
+          <input type="text"
+          class="form-control"
+       ng-model="selectedUser.name"
+       typeahead="user.name for user in users | filter:selectedUser"
+       typeahead-editable="true"
+       typeahead-on-select="goToUser($item)"
+       placeholder="Enter user"/>
+        </div>
+
+        </md-menu-bar>
+
+
+     </div>
+   </div>
+ </md-toolbar>
+</div>
+<!------------------------------------------------------------------------------>
+
+<!--Homepage-->
+<md-content layout-padding ng-if="!chosenAnime" >
+  <!--The search function-->
+  <div class="search">
+     Search: <input type="text" placeholder="Search for anime title" ng-model="search.value"></input>
+     <div class="form-group" style="display:inline-block">
+           <md-button class="md-raised md-primary" ng-click="sort('title')">Title
+               <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i>
+           </md-button>
+           <md-button class="md-raised md-primary" ng-click="sort('episodeCount')">Episodes
+               <i class="fa" ng-show="propToSortOn=='episodeCount'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i>
+           </md-button>
+     </div>
+  </div>
+
+  <!--The content of the homepage-->
+  <div id="divCell" class="col-xs-6 col-sm-4 col-md-3 col-lg-4" dir-paginate="anime in animes | itemsPerPage:animesPerPage" total-items="totalAnimes" current-page="pagination.current" style="border: 1px groove grey">
+    <h3 ng-click="setChosenAnime(anime)"><strong>{{anime.title}}</strong></h3>
+
+    <h4 class="h4">{{anime.episodeCount ? anime.episodeCount : 'unknown'}} eps - {{anime.status ? anime.status : 'unknown'}}</h4>
+
+    <div id="genreStyle">
+      <table style="display:inline-block; height:33px; border:none; border-collapse:collapse; " ng-repeat="genre in anime.genres">
+        <tr>
+            <th id="genreCell">{{genre.name ? genre.name : 'No genre'}} </th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-sm-5">
+      <img id="animeImage"ng-src="{{anime.image}}" alt="Coming" ng-click="setChosenAnime(anime)"/>
+    </div>
+
+    <div id="theDiscription" class="col-sm-9">
+        <h5>{{anime.description ? anime.description : 'No description'}}</h5>
+    </div>
+
+  </div>
+
+
+</md-content>
+
+<!--Pagination-->
+<div align="center" ng-if="!chosenAnime">
+<dir-pagination-controls on-page-change="pageChanged(newPageNumber)">
+</dir-pagination-controls>
+  <!--
+  <dir-pagination-controls
+       max-size="10"
+       direction-links="true"
+       boundary-links="true" >
+  </dir-pagination-controls>-->
+</div>
+
+
+<!--Anime Info page-->
+<md-content layout-padding ng-if="chosenAnime">
+  <div class="content" style="padding-top:20px;">
+    <md-button class="md-fab md-mini md-primary" aria-label="Go Back" ng-click="undoChosenAnime()">
+      <i class="fa fa-arrow-left"></i>
+    </md-button>
+    <div class="img-rounded" style="background-color:rgba(128, 128, 128,0.5);">
+      <h2 style="text-align:center;">{{chosenAnime.title ? chosenAnime.title : 'Missing title'}}</h2>
+    </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <!--The image-->
+            <div class="col-sm-4">
+              <div class="img-responsive">
+                <img id="infoAnime" ng-src="{{chosenAnime.image}}" alt="Coming"/>
+                <p id="userInfo">Type: {{chosenAnime.type ? chosenAnime.type : 'Missing type'}}</p>
+                <p id="userInfo">Episodes: {{chosenAnime.episodeCount ? chosenAnime.episodeCount : 'Missing episodeCount'}}</p>
+                <p id="userInfo">Air date: {{chosenAnime.airdate ? chosenAnime.airdate : 'Missing airdate'}}</p>
+                <p id="userInfo">End date: {{chosenAnime.enddate ? chosenAnime.enddate : 'Missing enddate'}}</p>
+                <p id="userInfo">Rating: {{chosenAnime.rating ? chosenAnime.rating : 'Missing rating'}}</p>
+                <md-button class="md-raised md-primary" aria-label="Add anime to list" ng-click="addAnimeToList(chosenAnime)" ng-show="isLogged">
+                  Add anime to my list
+                </md-button><br>
+              </div>
+            </div>
+            <!--The trailer and description-->
+            <div class="col-sm-8">
+              <div class="embed-responsive embed-responsive-4by3" ng-if="chosenAnime.trailer">
+                <p class="md-headline" style="border-bottom: 1px solid black">Trailer:</p>
+                <div>
+                <iframe class="youtube-player" type="text/html" width="640" height="385" class="embed-responsive-item" ng-src="{{trustSrc(chosenAnime.trailer)}}"></iframe>
+              </div>
+              </div>
+                <p class="md-headline" style="border-bottom: 1px solid black">Description:</p>
+                <p>{{chosenAnime.description ? chosenAnime.description : 'No description'}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </md-content>
+</div>

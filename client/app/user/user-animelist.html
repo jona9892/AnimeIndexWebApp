@@ -1,0 +1,256 @@
+<div flex-offset="30" flex="45">
+<!---The animelist page----->
+<md-content ng-if="!updatingAnimelist">
+  <md-button class="md-fab md-mini md-primary" aria-label="Go Back" ng-click="goBack()">
+    <i class="fa fa-arrow-left"></i>
+  </md-button><br>
+  <div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom >
+
+
+      <md-tab label="All animes">
+        <md-content class="md-padding">
+          <table style="width: 100%">
+            <tr>
+              <th id="menuitem2">#</th>
+              <th id="menuitem2"></th>
+              <th id="menuitem2" ng-click="sort('title')">Anime <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':!reverse,'fa-arrow-up':reverse}"></i></th>
+              <th id="menuitem2">Progress</th>
+              <th id="menuitem2"ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i></th>
+              <th id="menuitem2">Status</th>
+              <th id="menuitem2" ng-show="getUser">Edit</th>
+            </tr>
+            <tr ng-repeat="animelist in user.animes | orderBy : propToSortOn:reverse ">
+              <td id="number" style="width: 100px">{{ $index + 1 }}</td>
+              <td style="width: 100px">
+                <img id="imageDisplay" ng-src="{{animelist.theAnime.image}}" alt="Coming"/>
+              </td>
+              <td><p id="tabelTitle">{{animelist.theAnime.title ? animelist.theAnime.title : 'Missing'}}</p></td>
+              <td style="text-align: center">{{ animelist.episodeSeen ? animelist.episodeSeen : 'N/A'}} / {{ animelist.theAnime.episodeCount ? animelist.theAnime.episodeCount : 'N/A'}}</td>
+              <td style="text-align: center">{{ animelist.rating ? animelist.rating : 'N/A'}}</td>
+              <td style="text-align: center">{{ animelist.status ? animelist.status : 'N/A'}}</td>
+              <td style="text-align: center" ng-show="getUser">
+                <md-button ng-click="setUpdatingAnimelist(animelist)" class="md-icon-button" aria-label="Open sample menu" >
+                  <i class="fa fa-pencil"></i>
+                </md-button
+              </td>
+            </tr>
+          </table>
+        </md-content>
+      </md-tab>
+
+
+      <!--The completed Tab-->
+      <md-tab label="Completed">
+        <md-content class="md-padding">
+          <table style="width: 100%">
+            <tr>
+              <th id="menuitem2">#</th>
+              <th id="menuitem2"></th>
+              <th id="menuitem2" ng-click="sort('title')">Anime <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':!reverse,'fa-arrow-up':reverse}"></i></th>
+              <th id="menuitem2">Progress</th>
+              <th id="menuitem2"ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i></th>
+              <th id="menuitem2">Status</th>
+              <th id="menuitem2" ng-show="getUser">Edit</th>
+            </tr>
+            <tr ng-repeat="userAnime in getCompleted | orderBy : propToSortOn:reverse ">
+              <td id="number" style="width: 100px">{{ $index + 1 }}</td>
+              <td style="width: 100px">
+                <img id="imageDisplay" ng-src="{{userAnime.theAnime.image}}" alt="Coming"/>
+              </td>
+              <td><p id="tabelTitle">{{userAnime.theAnime.title ? userAnime.theAnime.title : 'Missing'}}</p></td>
+              <td style="text-align: center">{{ userAnime.episodeSeen ? userAnime.episodeSeen : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.rating ? userAnime.rating : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.status ? userAnime.status : 'N/A'}}</td>
+              <td style="text-align: center" ng-show="getUser">
+                <md-button ng-click="setUpdatingAnimelist(animelist)" class="md-icon-button" aria-label="Open sample menu">
+                  <i class="fa fa-pencil"></i>
+                </md-button
+              </td>
+            </tr>
+          </table>
+
+        </md-content>
+      </md-tab>
+
+      <!--The Watching Tab-->
+      <md-tab label="Watching">
+        <md-content class="md-padding">
+          <table style="width: 100%">
+            <tr>
+              <th id="menuitem2">#</th>
+              <th id="menuitem2"></th>
+              <th id="menuitem2" ng-click="sort('title')">Anime <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':!reverse,'fa-arrow-up':reverse}"></i></th>
+              <th id="menuitem2">Progress</th>
+              <th id="menuitem2"ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i></th>
+              <th id="menuitem2">Status</th>
+              <th id="menuitem2" ng-show="getUser">Edit</th>
+            </tr>
+
+            <tr ng-repeat="userAnime in getWatching | orderBy : propToSortOn:reverse ">
+              <td id="number" style="width: 100px">{{ $index + 1 }}</td>
+              <td style="width: 100px">
+                <img id="imageDisplay" ng-src="{{userAnime.theAnime.image}}" alt="Coming"/>
+              </td>
+              <td><p id="tabelTitle">{{userAnime.theAnime.title ? userAnime.theAnime.title : 'Missing'}}</p></td>
+              <td style="text-align: center">{{ userAnime.episodeSeen ? userAnime.episodeSeen : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.rating ? userAnime.rating : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.status ? userAnime.status : 'N/A'}}</td>
+              <td style="text-align: center" ng-show="getUser">
+                <md-button ng-click="setUpdatingAnimelist(animelist)" class="md-icon-button" aria-label="Open sample menu">
+                  <i class="fa fa-pencil"></i>
+                </md-button
+              </td>
+            </tr>
+          </table>
+        </md-content>
+      </md-tab>
+
+      <!--The Unhold Tab-->
+      <md-tab label="Unhold">
+        <md-content class="md-padding">
+          <table style="width: 100%">
+            <tr>
+              <th id="menuitem2">#</th>
+              <th id="menuitem2"></th>
+              <th id="menuitem2" ng-click="sort('title')">Anime <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':!reverse,'fa-arrow-up':reverse}"></i></th>
+              <th id="menuitem2">Progress</th>
+              <th id="menuitem2"ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i></th>
+              <th id="menuitem2">Status</th>
+              <th id="menuitem2" ng-show="getUser">Edit</th>
+            </tr>
+
+            <tr ng-repeat="userAnime in getUnhold | orderBy : propToSortOn:reverse ">
+              <td id="number" style="width: 100px">{{ $index + 1 }}</td>
+              <td style="width: 100px">
+                <img id="imageDisplay" ng-src="{{userAnime.theAnime.image}}" alt="Coming"/>
+              </td>
+              <td><p id="tabelTitle">{{userAnime.theAnime.title ? userAnime.theAnime.title : 'Missing'}}</p></td>
+              <td style="text-align: center">{{ userAnime.episodeSeen ? userAnime.episodeSeen : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.rating ? userAnime.rating : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.status ? userAnime.status : 'N/A'}}</td>
+              <td style="text-align: center" ng-show="getUser">
+                <md-button ng-click="setUpdatingAnimelist(animelist)" class="md-icon-button" aria-label="Open sample menu">
+                  <i class="fa fa-pencil"></i>
+                </md-button
+              </td>
+            </tr>
+          </table>
+        </md-content>
+      </md-tab>
+
+      <!--The Dropped Tab-->
+      <md-tab label="Dropped">
+        <md-content class="md-padding">
+          <table style="width: 100%">
+            <tr>
+              <th id="menuitem2">#</th>
+              <th id="menuitem2"></th>
+              <th id="menuitem2" ng-click="sort('title')">Anime <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':!reverse,'fa-arrow-up':reverse}"></i></th>
+              <th id="menuitem2">Progress</th>
+              <th id="menuitem2"ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i></th>
+              <th id="menuitem2">Status</th>
+              <th id="menuitem2" ng-show="getUser">Edit</th>
+            </tr>
+
+            <tr ng-repeat="userAnime in getDropped | orderBy : propToSortOn:reverse ">
+              <td id="number" style="width: 100px">{{ $index + 1 }}</td>
+              <td style="width: 100px">
+                <img id="imageDisplay" ng-src="{{userAnime.theAnime.image}}" alt="Coming"/>
+              </td>
+              <td><p id="tabelTitle">{{userAnime.theAnime.title ? userAnime.theAnime.title : 'Missing'}}</p></td>
+              <td style="text-align: center">{{ userAnime.episodeSeen ? userAnime.episodeSeen : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.rating ? userAnime.rating : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.status ? userAnime.status : 'N/A'}}</td>
+              <td style="text-align: center" ng-show="getUser">
+                <md-button ng-click="setUpdatingAnimelist(animelist)" class="md-icon-button" aria-label="Open sample menu">
+                  <i class="fa fa-pencil"></i>
+                </md-button
+              </td>
+            </tr>
+          </table>
+        </md-content>
+      </md-tab>
+
+      <!--The Plan to watch Tab-->
+      <md-tab label="Plan to watch">
+        <md-content class="md-padding">
+          <table style="width: 100%">
+            <tr>
+              <th id="menuitem2">#</th>
+              <th id="menuitem2"></th>
+              <th id="menuitem2" ng-click="sort('title')">Anime <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':!reverse,'fa-arrow-up':reverse}"></i></th>
+              <th id="menuitem2">Progress</th>
+              <th id="menuitem2"ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i></th>
+              <th id="menuitem2">Status</th>
+              <th id="menuitem2"ng-show="getUser">Edit</th>
+            </tr>
+
+            <tr ng-repeat="userAnime in getPlanToWatch| orderBy : propToSortOn:reverse ">
+              <td id="number" style="width: 100px">{{ $index + 1 }}</td>
+              <td style="width: 100px">
+                <img id="imageDisplay" ng-src="{{userAnime.theAnime.image}}" alt="Coming"/>
+              </td>
+              <td><p id="tabelTitle">{{userAnime.theAnime.title ? userAnime.theAnime.title : 'Missing'}}</p></td>
+              <td style="text-align: center">{{ userAnime.episodeSeen ? userAnime.episodeSeen : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.rating ? userAnime.rating : 'N/A'}}</td>
+              <td style="text-align: center">{{ userAnime.status ? userAnime.status : 'N/A'}}</td>
+              <td style="text-align: center" ng-show="getUser">
+                <md-button ng-click="setUpdatingAnimelist(animelist)" class="md-icon-button" aria-label="Open sample menu">
+                  <i class="fa fa-pencil"></i>
+                </md-button
+              </td>
+            </tr>
+          </table>
+        </md-content>
+      </md-tab>
+
+    </md-tabs>
+  </md-content>
+  </div>
+</md-content>
+
+<!--EditForm for animelist-->
+  <md-content layout-padding flex-offset="30" flex="40" ng-if="updatingAnimelist && getUser" class="animate-new-course">
+    <form name="updateAnimelistForm" style="margin-bottom:10px">
+
+      <h1>{{updatingAnimelist.theAnime.title}}</h1>
+
+      <h2 class="md-title">Select status</h2>
+      <md-input-container class="md-block" flex-gt-sm>
+        <md-select ng-model="updatingAnimelist.status" placeholder="{{updatingAnimelist.status}}">
+          <md-optgroup label="Statuses">
+            <md-option ng-value="status" ng-repeat="status in statuses">{{status}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+
+      <h2 class="md-title">Select rating</h2>
+      <md-input-container class="md-block" flex-gt-sm>
+        <md-select ng-model="updatingAnimelist.rating" placeholder="{{updatingAnimelist.rating}}">
+          <md-optgroup label="Ratings">
+            <md-option ng-value="rating" ng-repeat="rating in ratings">{{rating}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+
+      <h2 class="md-title">Select episode seen</h2>
+      <md-input-container class="md-block" flex-gt-sm>
+        <md-select ng-model="updatingAnimelist.episodeSeen" placeholder="{{updatingAnimelist.episodeSeen}}">
+          <md-optgroup label="Episodes">
+            <md-option ng-value="episode" ng-repeat="episode in episodes">{{episode}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+
+      <button class="btn btn-primary" ng-click="saveAnimelist(updateAnimelistForm)">Save changes</button>
+    </form>
+
+    <md-button aria-label="undo changes" ng-click="undoAnimelistUpdate()" class="md-raised md-warning">
+      <i class="fa fa-undo"></i>Cancel
+    </md-button>
+
+  </md-content>
+
+</div>

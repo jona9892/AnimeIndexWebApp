@@ -1,0 +1,155 @@
+<div ng-if="isAdmin()">
+  <!--If updatingAnime is undefined show this-->
+  <md-content flex-offset="5" flex="90" ng-if="!updatingAnime">
+    <md-list flex>
+      <!--AddForm-->
+      <form name="newAnimeForm">
+        <md-list-item style="margin-bottom:10px">
+          <md-input-container flex="15" class="md-block">
+            <label>Anime</label>
+            <input required ng-model="newAnime.title" name="titleOfAnime">
+          </md-input-container>
+          <md-button ng-click="addAnime(newAnimeForm)">
+            <i class="fa fa-plus"> ADD</i>
+          </md-button>
+          <button class="btn btn-primary" ng-click="goToAnimeCreate('/animeCreate')">Add new anime</button>
+
+
+          <md-divider></md-divider>
+        </md-list-item>
+      </form>
+
+        <!--Index-->
+      <md-subheader class="md-no-sticky">Animes </md-subheader>
+      <form class="search-form" id="searchbar" >
+        <input type="search" value="" placeholder="Search for anime" ng-model="search.value" class="search-input"></input>
+      </form>
+      <md-content class="md-padding">
+        <table style="width: 100%">
+          <tr>
+            <th id="menuitem2">Image</th>
+            <th id="menuitem2" ng-click="sort('title')">Title <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
+            <th id="menuitem2" ng-click="sort('status')">status <i class="fa" ng-show="propToSortOn=='status'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
+            <th id="menuitem2" ng-click="sort('episodeCount')">Episodes <i class="fa" ng-show="propToSortOn=='episodeCount'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
+            <th id="menuitem2" ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
+            <th id="menuitem2">Description</th>
+            <th id="menuitem2">Edit</th>
+          </tr>
+          <tr dir-paginate="anime in animes | itemsPerPage:animesPerPage" total-items="totalAnimes" current-page="pagination.current">
+            <td style="width: 100px"><img ng-src="{{anime.image}}" alt="Coming" id="imageDisplay"/></td>
+            <td style="text-align: center">{{anime.title ? anime.title : 'Missing'}}</td>
+            <td style="text-align: center">{{ anime.status ? anime.status : 'N/A'}}</td>
+            <td style="text-align: center">{{ anime.episodeCount ? anime.episodeCount : 'N/A'}}</td>
+            <td style="text-align: center">{{ anime.rating ? anime.rating : 'N/A'}}</td>
+            <td style="text-align: center">{{ anime.description ? anime.description : 'N/A'}}</td>
+            <td  style="text-align: center">
+              <md-button ng-click="setUpdatingAnime(anime)" class="md-icon-button" aria-label="Open sample menu">
+                <i class="fa fa-pencil"></i>
+              </md-button>
+            </td>
+
+          </tr>
+        </table>
+      </md-content>
+    </md-list>
+  </md-content>
+
+  <div align="center" ng-if="!updatingAnime">
+  <dir-pagination-controls on-page-change="pageChanged(newPageNumber)">
+  </dir-pagination-controls>
+    <!--
+    <dir-pagination-controls
+         max-size="10"
+         direction-links="true"
+         boundary-links="true" >
+    </dir-pagination-controls>-->
+  </div>
+
+<!--EditForm if updatingAnime has an anime-->
+  <md-content layout-padding flex-offset="30" flex="40" ng-if="updatingAnime" class="animate-new-course">
+    <form name="updateAnimeForm" style="margin-bottom:10px">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Title</label>
+        <input required ng-model="updatingAnime.title" name="titleOfAnime">
+        <div ng-messages="newUpdateForm.titleOfAnimee.$error" role="alert">
+          <div ng-message="required">Please specify an anime</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Status</label>
+        <input ng-model="updatingAnime.status">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Description</label>
+        <input ng-model="updatingAnime.description">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Episodes</label>
+        <input ng-model="updatingAnime.episodeCount" type="Number">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Rating</label>
+        <input min="1" max="10" ng-model="updatingAnime.rating" type="Number" name="ratingOfAnime">
+        <div ng-messages="updateAnimeForm.ratingOfAnime.$error" role="alert">
+          <div ng-message="min">Rating can't be less than 1</div>
+          <div ng-message="max">Rating can't be higher than 10</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>airdate</label>
+        <input ng-model="updatingAnime.airdate">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>enddate</label>
+        <input ng-model="updatingAnime.enddate">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Image</label>
+        <input ng-model="updatingAnime.image">
+      </md-input-container>
+      <Label>Genres</Label>
+
+      <div ng-repeat="genre in updatingAnime.genres">
+        <span>{{genre.name}}</span>
+        </md-button>
+      </div>
+      <div flex="5">
+        <md-button ng-click="setUpdatingGenre(true)" class="md-fab md-mini md-primary" aria-label="Open sample menu" ng-if="!updatingGenre">
+            <md-icon md-svg-icon="assets/images/add.svg"></md-icon>
+        </md-button>
+      </div>
+
+      <md-content  ng-if="updatingGenre">
+        <form name="addGenreForm" style="margin-bottom:10px">
+        <md-input-container>
+            <label>Genres</label>
+            <md-select ng-model="newGenre" >
+              <md-optgroup label="genres">
+                <md-option ng-value="genre" ng-repeat="genre in genres">{{genre.name}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container>
+          <button class="btn btn-primary" ng-click="addGenre(newGenre)">Save changes</button>
+        </form>
+      </md-content>
+
+
+      <button class="btn btn-primary" ng-click="updateAnime(updateAnimeForm)">Save changes</button>
+      <md-button aria-label="Delete Anime" class="md-raised md-danger" ng-click="deleteAnime(updatingAnime, $event)">
+        <div style="color:darkred">
+          <i class="fa fa-trash"></i> Delete
+        </div>
+      </md-button>
+    </form>
+
+    <md-button aria-label="undo changes" ng-click="undoAnimeUpdate()" class="md-raised md-warning">
+      <i class="fa fa-undo"></i>Cancel
+    </md-button>
+  </md-content>
+
+
+
+</div>
+<div ng-if="!isAdmin()">
+  <h3>You need to be logged in as an administrator!</h3>
+</div>

@@ -1,0 +1,29 @@
+#userPicture {
+
+      position: relative;
+      width: 220px;
+      height: 280px;
+      max-height: 100%;
+      max-width: 100%;
+      display: block;
+      margin: 1%;
+      transition: 0.3s;
+      border: 1px solid black;
+
+
+}
+
+#userInfo{
+    font-size: 16px;
+    margin-left: 5px;
+    border-bottom: 1px solid #e6e6e6;
+    width: 220px;
+}
+
+
+.md-button {
+    min-width: 10em;
+}
+
+#editBtnStyle{
+}

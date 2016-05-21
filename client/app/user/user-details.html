@@ -1,0 +1,37 @@
+
+<div flex-offset="15" flex="70">
+
+  <md-content flex-offset="5" flex="90" ng-if="!userAnimelist">
+
+    <div flex-sm="100" flex-xs="100" layout="row">
+        <md-button class="md-fab md-mini md-primary" aria-label="Go Back" ng-click="goToUser(user)">
+          <i class="fa fa-arrow-left"></i>
+        </md-button><br>
+
+      <div flex>
+        <div class="col-sm-3">
+          <img id="userPicture"ng-src="{{user.picture}}" alt="Coming"/>
+          <div flex-sm="100" flex-xs="100"class="md-list-item-text" layout="column">
+            <p id="userInfo">Name:{{ user.name ? user.name : 'No name' }}</p>
+            <p id="userInfo">Age: {{ user.age ? user.age : 'No age' }}</p>
+            <p id="userInfo">Country: {{ user.country ? user.country : 'No country' }}</p>
+          </div>
+          <md-button class="md-raised md-primary" aria-label="See anime list" ng-click="goToAnimelist(user)">
+            Animelist
+          </md-button><br>
+          <md-button class="md-raised md-primary" aria-label="See manga list" ng-click="seeAnimelist()">
+            Mangalist
+          </md-button><br>
+
+        </div>
+        <div class="col-lg-8">
+          <p class="md-headline" style="border-bottom: 1px solid black">Description:</p>
+          <p>{{user.description ? user.description : 'No description...'}}</p>
+        </div>
+      </div>
+
+    </div>
+    <hr>
+  </md-content>
+
+</div>

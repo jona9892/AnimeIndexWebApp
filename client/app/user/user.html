@@ -1,0 +1,31 @@
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>User Management</h1>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row" ng-if="isAdmin()">
+    <div class="col-lg-12">
+      <div class="form-group">
+        <label><i class="fa fa-globe"></i> User</label>
+        <input type="text" class="form-control" ng-model="selectedUser"  bs-options="user.name for user in users" placeholder="Enter user" bs-typeahead>
+      </div>
+      <md-list>
+        <md-subheader class="md-no-sticky">Users</md-subheader>
+        <md-list-item class="md-2-line" ng-click="goToUser(user)" ng-repeat="user in users">
+          <div class="md-list-item-text" layout="column">
+            <h4 class="media-heading">{{user.name}}</h4>
+            <md-divider></md-divider>
+            <h6 class="text-muted"> - {{user.email}}</h6>
+          </div>
+          <a ng-click="deleteUser(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+        </md-list-item>
+      </md-list>
+
+    </div>
+  </div>
+  <div class="row" ng-if="!isAdmin()">
+    <h3>Login to see anything</h3>
+  </div>
+</div>

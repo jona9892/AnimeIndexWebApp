@@ -1,0 +1,116 @@
+
+<div flex-offset="15" flex="70">
+<!--The menu bar and banner animeindex-->
+<div>
+<header id="banner">
+  <div>
+    <h1 id="bannerText">AnimeIndex <img id="image" src="assets/images/naruto.png" alt="Anime"> </h1>
+  </div>
+</header>
+<hr flex-offset="15" flex="70">
+<md-toolbar class="md-menu-toolbar">
+   <div layout="row" id="menubar">
+     <div>
+       <md-menu-bar>
+         <md-menu>
+           <button ng-click="$mdOpenMenu()">
+             <div id="menuitem">Anime</div>
+           </button>
+           <md-menu-content>
+
+             <md-menu-item>
+               <md-button>
+                 <a href="/home">Animes</a>
+               </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+
+              <md-menu-item>
+               <md-button>
+                 <a href="/searchanime">Search animes</a>
+               </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+
+              <md-menu-item>
+               <md-button>
+                 <a href="/topanime">Best animes</a>
+               </md-button>
+             </md-menu-item>
+             <md-menu-divider></md-menu-divider>
+
+           </md-menu-content>
+         </md-menu>
+        <md-menu>
+          <button ng-click="$mdOpenMenu()">
+            <div  id="menuitem">Manga</div>
+          </button>
+
+          <md-menu-content>
+
+            <md-menu-item>
+              <md-button>
+                <a href="/home">Mangas</a>
+              </md-button>
+             </md-menu-item>
+             <md-menu-divider></md-menu-divider>
+
+             <md-menu-item>
+              <md-button>
+                <a href="/searchanime">Search mangas</a>
+              </md-button>
+             </md-menu-item>
+             <md-menu-divider></md-menu-divider>
+
+             <md-menu-item>
+              <md-button>
+                <a href="/topanime">Best mangas</a>
+              </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+
+          </md-menu-content>
+        </md-menu>
+        <div class="form-group" style="display:inline-block ">
+          <label ><i class="fa fa-globe"></i> User</label>
+          <input type="text"
+          class="form-control"
+       ng-model="selectedUser.name"
+       typeahead="user.name for user in users | filter:selectedUser"
+       typeahead-editable="true"
+       typeahead-on-select="goToUser($item)"
+       placeholder="Enter user"/>
+        </div>
+        </md-menu-bar>
+
+     </div>
+   </div>
+ </md-toolbar>
+</div>
+<!------------------------------------------------------------------------------>
+<!--The table-->
+<div>
+  <table style="width: 100%">
+    <tr>
+      <th id="menuitem2">Rank</th>
+      <th id="menuitem2"></th>
+      <th id="menuitem2">Anime</th>
+      <th id="menuitem2">Episodes</th>
+      <th id="menuitem2">Rating</th>
+      <th id="menuitem2">Status</th>
+    </tr>
+    <tr dir-paginate="anime in animes | orderBy : '-rating' | itemsPerPage:animesPerPage" total-items="totalAnimes" current-page="pagination.current">
+      <td id="number" style="width: 100px">{{ $index + 1 }}</td>
+      <td style="width: 100px"><img  id="imageDisplay"ng-src="{{anime.image}}" alt="Coming"/></td>
+      <td><p id="tabelTitle">{{ anime.title }}</p><div id="tableInfo">{{anime.type}}</div><div id="tableInfo">{{anime.airdate}} - {{anime.enddate}}</div></td>
+      <td style="text-align: center" >{{ anime.episodeCount }}</td>
+      <td style="text-align: center">{{ anime.rating }}</td>
+      <td style="text-align: center">{{ anime.status }}</td>
+    </tr>
+  </table>
+</div>
+
+<dir-pagination-controls on-page-change="pageChanged(newPageNumber)">
+</dir-pagination-controls>
+<!------------------------------------------------------------------------------>
+</div>
