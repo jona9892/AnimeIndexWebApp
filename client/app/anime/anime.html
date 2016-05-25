@@ -1,4 +1,4 @@
-<div ng-if="isAdmin()">
+<div ng-if="isAdmin()" flex-offset="15" flex="70">
   <!--If updatingAnime is undefined show this-->
   <md-content flex-offset="5" flex="90" ng-if="!updatingAnime">
     <md-list flex>
@@ -28,10 +28,10 @@
         <table style="width: 100%">
           <tr>
             <th id="menuitem2">Image</th>
-            <th id="menuitem2" ng-click="sort('title')">Title <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
-            <th id="menuitem2" ng-click="sort('status')">status <i class="fa" ng-show="propToSortOn=='status'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
-            <th id="menuitem2" ng-click="sort('episodeCount')">Episodes <i class="fa" ng-show="propToSortOn=='episodeCount'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
-            <th id="menuitem2" ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
+            <th id="menuitem2" ng-click="sort('title')">Title </th>
+            <th id="menuitem2" ng-click="sort('status')">status</th>
+            <th id="menuitem2" ng-click="sort('episodeCount')">Episodes </th>
+            <th id="menuitem2" ng-click="sort('rating')">Rating </th>
             <th id="menuitem2">Description</th>
             <th id="menuitem2">Edit</th>
           </tr>
@@ -41,10 +41,10 @@
             <td style="text-align: center">{{ anime.status ? anime.status : 'N/A'}}</td>
             <td style="text-align: center">{{ anime.episodeCount ? anime.episodeCount : 'N/A'}}</td>
             <td style="text-align: center">{{ anime.rating ? anime.rating : 'N/A'}}</td>
-            <td style="text-align: center">{{ anime.description ? anime.description : 'N/A'}}</td>
+            <td style="text-align: center">{{ anime.description ? anime.description : 'Missing'}}</td>
             <td  style="text-align: center">
               <md-button ng-click="setUpdatingAnime(anime)" class="md-icon-button" aria-label="Open sample menu">
-                <i class="fa fa-pencil"></i>
+                 <md-icon md-svg-src="assets/images/edit.svg"></md-icon>
               </md-button>
             </td>
 
@@ -55,14 +55,8 @@
   </md-content>
 
   <div align="center" ng-if="!updatingAnime">
-  <dir-pagination-controls on-page-change="pageChanged(newPageNumber)">
-  </dir-pagination-controls>
-    <!--
-    <dir-pagination-controls
-         max-size="10"
-         direction-links="true"
-         boundary-links="true" >
-    </dir-pagination-controls>-->
+    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)">
+    </dir-pagination-controls>
   </div>
 
 <!--EditForm if updatingAnime has an anime-->
@@ -119,7 +113,7 @@
         </md-button>
       </div>
 
-      <md-content  ng-if="updatingGenre">
+      <md-content ng-show="updatingGenre">
         <form name="addGenreForm" style="margin-bottom:10px">
         <md-input-container>
             <label>Genres</label>

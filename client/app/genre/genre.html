@@ -1,4 +1,4 @@
-<div ng-if="isAdmin()">
+<div ng-if="isAdmin()" flex-offset="15" flex="70">
   <md-content flex-offset="5" flex="90" ng-if="!updatingGenre">
     <md-list flex>
       <!--AddForm-->
@@ -22,7 +22,7 @@
       <md-content class="md-padding">
         <table style="width: 100%">
           <tr>
-            <th id="menuitem2" ng-click="sort('name')">Genre <i class="fa" ng-show="propToSortOn=='name'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"</th>
+            <th id="menuitem2" ng-click="sort('name')">Genre</th>
             <th id="menuitem2">Edit</th>
             <th id="menuitem2">Delete</th>
           </tr>
@@ -31,13 +31,13 @@
 
             <td  style="text-align: center">
                 <md-button ng-click="setUpdatingGenre(genre)" class="md-icon-button" aria-label="Open sample menu">
-                  <i class="fa fa-pencil"></i>
+                  <md-icon md-svg-src="assets/images/edit.svg"></md-icon>
                 </md-button>
             </td>
             <td  style="text-align: center">
               <md-button aria-label="Delete Genre" cclass="md-icon-button" ng-click="deleteGenre(genre)">
                 <div style="color:darkred">
-                  <i class="fa fa-trash"></i> 
+                  <md-icon md-svg-src="assets/images/delete.svg"></md-icon>
                 </div>
               </md-button>
             </td>

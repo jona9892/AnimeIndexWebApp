@@ -175,9 +175,9 @@
     <table style="width: 100%">
       <tr>
         <th id="menuitem2"></th>
-        <th id="menuitem2" ng-click="sort('title')">Anime <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i></th>
-        <th id="menuitem2" ng-click="sort('episodeCount')">Episodes <i class="fa" ng-show="propToSortOn=='episodeCount'" ng-class="{'fa-arrow-down':!reverse,'fa-arrow-up':reverse}"></i></th>
-        <th id="menuitem2"ng-click="sort('rating')">Rating <i class="fa" ng-show="propToSortOn=='rating'" ng-class="{'fa-arrow-down':!reverse,'fa-arrow-up':reverse}"></i></th>
+        <th id="menuitem2" ng-click="sort('title')">Anime </th>
+        <th id="menuitem2" ng-click="sort('episodeCount')">Episodes </th>
+        <th id="menuitem2"ng-click="sort('rating')">Rating</th>
         <th id="menuitem2">Status</th>
       </tr>
       <tr dir-paginate="anime in animes | filter:searchGenre | itemsPerPage:animesPerPage" total-items="totalAnimes" current-page="pagination.current"  >
@@ -207,7 +207,7 @@
 <md-content layout-padding ng-if="chosenAnime">
   <div class="content" style="padding-top:20px;">
     <md-button class="md-fab md-mini md-primary" aria-label="Go Back" ng-click="undoChosenAnime()">
-      <i class="fa fa-arrow-left"></i>
+       <md-icon md-svg-src="assets/images/back.svg"></md-icon>
     </md-button>
 
     <div class="content" style="padding-top:20px;">

@@ -1,5 +1,6 @@
 
     #animeImage {
+      display:block;
         position: relative;
         width: 220px;
         height: 270px;

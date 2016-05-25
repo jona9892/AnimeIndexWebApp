@@ -2,7 +2,7 @@
 
 angular.module('animeindexApp')
   .controller('HomeCtrl', function ($scope,$state, GenreService, AnimeService , $sce, Auth, User, $mdToast, $filter, socket) {
-    $scope.isLogged = Auth.isLoggedIn();
+    $scope.isAuthenticated = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
 
     $scope.selectedUser = "";
@@ -14,7 +14,6 @@ angular.module('animeindexApp')
 
     $scope.goToUser = function(user) {
       $state.go('userdetails', {
-
         id: user._id
       });
     }
@@ -76,7 +75,7 @@ angular.module('animeindexApp')
 
     //-------------------------------------------------------------------------------------
       $scope.userCurrent = Auth.getCurrentUser();
-      
+
       $scope.newAnimeStatus = {};
       $scope.newAnimeToList = {};
 

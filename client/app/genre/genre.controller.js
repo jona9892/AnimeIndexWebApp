@@ -27,18 +27,8 @@ angular.module('animeindexApp')
     $scope.newGenre = {};
     $scope.addGenre = function(form){
         if(form.$valid){
-          GenreService.save($scope.newGenre);
+        GenreService.save($scope.newGenre);
 
-          //Find ud af hvad det ehr gør - virker ikke
-        /*  AnimeService.update({
-            id: $scope.newAnime._id
-          },
-          $scope.anime, function(anime){
-          $scope.anime = anime;
-          //resets the form
-
-
-        });*/
         form.$setPristine();
         form.$setUntouched();
         var toast = $mdToast.simple()

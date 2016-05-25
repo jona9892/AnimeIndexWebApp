@@ -76,17 +76,8 @@ export function index(req, res) {
       'title':new RegExp(req.query.search, 'i'),
       'type':new RegExp(req.query.searchType, 'i'),
       'status':new RegExp(req.query.searchStatus, 'i')
-    };
-  }/*
-  if(req.query.searchType && req.query.searchType.length > 0){
-    query = {'type':new RegExp(req.query.searchType, 'i') };
-  }
-  if(req.query.searchStatus && req.query.searchStatus.length > 0){
-    query = {'status':new RegExp(req.query.searchStatus, 'i') };
-  }
-  if(req.query.searchRating && req.query.searchRating.length > 0){
-    query = {'rating':parseFloat(req.query.searchRating) };
-  }*/
+    }
+  };
 
   //Make sure limit and page are numbers and above 1
   if(!req.query.limit || parseFloat(req.query.limit) < 1){

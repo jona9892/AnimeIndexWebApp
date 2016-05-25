@@ -5,31 +5,24 @@ angular.module('animeindexApp')
 
     $scope.isAuthenticated = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
+    $scope.userCurrent = Auth.getCurrentUser();
 
     $scope.user = {};
+    $scope.getUser = {};
+
+    User.get({id:$stateParams.id}, function(user) {
+      $scope.user = user;
+      $scope.getUser = checkUser(user);
+      filterAnimes(user);
+    });
 
     $scope.getCompleted = [];
     $scope.getWatching = [];
     $scope.getUnhold = [];
     $scope.getDropped = [];
     $scope.getPlanToWatch = [];
-    User.get({id:$stateParams.id}, function(user) {
-      $scope.user = user;
-      $scope.userCurrent = Auth.getCurrentUser();
-
-      var checkUser = function(){
-        console.log($scope.userCurrent.name);
-        console.log($scope.user.name);
-        if(angular.equals($scope.userCurrent.name, $scope.user.name)){
-          return true;
-        } else {
-          return false;
-        }
-      }
-      $scope.getUser = checkUser();
-
-
-      //Get an array of animes with the status completed
+    //Filter the animes based on the status
+    var filterAnimes = function(user){
       for(var i = 0; i<user.animes.length; i++){
          $scope.anime = user.animes[i];
          if($scope.anime.status == "Completed"){
@@ -44,7 +37,17 @@ angular.module('animeindexApp')
             $scope.getPlanToWatch.push($scope.anime);
          }
        }
-    });
+    }
+
+    var checkUser = function(user){
+      return $scope.userCurrent._id === user._id;
+      /* if(angular.equals($scope.userCurrent._id, user._id)){
+        return $scope.getUser = user._id;
+      } else {
+        return $scope.getUser = undefined;
+     }*/
+    }
+
 
     $scope.goBack = function(){
       window.history.back();
@@ -79,7 +82,7 @@ angular.module('animeindexApp')
     //This will set the updatingAnime to an anime and fill the episode array
     $scope.setUpdatingAnimelist = function(animelist){
       $scope.updatingAnimelist = animelist;
-      for (var i = 1; i < $scope.updatingAnimelist.theAnime.episodeCount; i++) {
+      for (var i = 1; i < $scope.updatingAnimelist.theAnime.episodeCount +1; i++) {
         $scope.episodes.push(i);
       }
     };

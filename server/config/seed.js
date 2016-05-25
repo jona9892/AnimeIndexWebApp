@@ -74,7 +74,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount:220,
-      image: 'http://ia.media-imdb.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY268_CR0,0,182,268_AL_.jpg',
+      image: 'http://cdn.myanimelist.net/images/anime/13/17405.jpg',
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
@@ -87,7 +87,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTAwNzAwNjQwNjFeQTJeQWpwZ15BbWU3MDg2NTg2NDI@._V1._CR32,31,291,434_UX182_CR0,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/6/73245.jpg",
       genres: ["56ef259d24cc07842b42fea1"]
     },
     {
@@ -100,7 +100,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BNzc4MTA1NTEzNV5BMl5BanBnXkFtZTgwMDE1OTE4MzE@._V1_UY268_CR3,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/11/33657.jpg",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
@@ -113,7 +113,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMjA4NDg3NzEzNF5BMl5BanBnXkFtZTcwMDkzMjE2MQ@@._V1_UY268_CR8,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/10/75815.jpg",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
@@ -126,7 +126,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTYwOTA5MDQ4NF5BMl5BanBnXkFtZTgwMDYxNzQ4MzE@._V1._CR92,0,316,374_UY268_CR22,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/5/17407.jpg",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
@@ -139,7 +139,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTQ1MDM5Nzc0Nl5BMl5BanBnXkFtZTgwMTI3ODkwMzE@._V1_UY268_CR87,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/3/40451.jpg",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
@@ -152,7 +152,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTI0NTI1NjU5NV5BMl5BanBnXkFtZTcwNDg3NDg5MQ@@._V1_UY190_CR4,0,128,190_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/9/9453.jpg",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
@@ -165,7 +165,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTY5ODk1NzUyMl5BMl5BanBnXkFtZTgwMjUyNzEyMTE@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/manga/2/37846.jpg",
       trailer: "https://www.youtube.com/embed/MGRm4IzK1SQ",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
@@ -179,7 +179,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTIzNDE4MTAxMl5BMl5BanBnXkFtZTcwNDMzMTE4MQ@@._V1._CR58,63,257,367_UY268_CR3,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/5/50331.jpg",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
@@ -192,12 +192,12 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTQ0NTY1NDA4Ml5BMl5BanBnXkFtZTgwODU1NTAxMzE@._V1_UY268_CR87,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/11/39717.jpg",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
       _id: "56e5e201556763242af3df11",
-      title: 'Fairy Tale',
+      title: 'Fairy Tail',
       status: 'Airing',
       type: "TV",
       description: 'metal boy doing stuff',
@@ -205,7 +205,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTc0NjAzMDUyMV5BMl5BanBnXkFtZTgwOTI3OTcwMzE@._V1_UY268_CR87,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/5/18179.jpg",
         genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
@@ -218,7 +218,7 @@ Anime.find({}).removeAsync()
       airdate: '10-20-1999',
       enddate: '10-20-2008',
       episodeCount: 730,
-      image: "http://ia.media-imdb.com/images/M/MV5BMTUxMTcxODUxNl5BMl5BanBnXkFtZTgwNDI0NjcxNjE@._V1_UY268_CR87,0,182,268_AL_.jpg",
+      image: "http://cdn.myanimelist.net/images/anime/10/75195.jpg",
       genres: ["56ef259d24cc07842b42fea1", "56ef370a432bb6e01f4dfc72"]
     },
     {
